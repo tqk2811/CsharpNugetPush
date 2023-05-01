@@ -1,12 +1,9 @@
-﻿param (
-    [string]$buildIndex="00"
-)
-$workingDir = Get-Location
+﻿$workingDir = Get-Location
 $dirInfo= New-Object -Typename System.IO.DirectoryInfo -ArgumentList ($workingDir)
 $projectName= $dirInfo.Name;
 $key=$env:nugetKey
-$buildDay=[DateTime]::Now.ToString("yyyyMMdd")
-$p="buildDay=$($buildDay);buildIndex=$($buildIndex)".Trim()
+$buildDay=[DateTime]::Now.ToString("yyyyMMddHHmmss")
+$p="buildDay=$($buildDay)".Trim()
 $build="Release"
 
 function RunCommand
